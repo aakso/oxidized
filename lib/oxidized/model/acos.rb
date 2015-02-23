@@ -22,7 +22,7 @@ class ACOS < Oxidized::Model
       # only consider scripts that have passed syntax check
       h[h.keys.last] << $1 if l.match /^([\w-]+) +Check/  
     end
-    ''
+    '' # data gathering: return empty string so output is not appended
   end
 
   cmd :all do |cfg, cmdstring|
@@ -41,6 +41,7 @@ class ACOS < Oxidized::Model
             out << "aflex create #{name}"
             out << content
             out << ".\n"
+            '' # we are returning the real output later
           end
         end
       end
